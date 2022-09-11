@@ -20,13 +20,15 @@
     <title>WeHelp</title>
   </head>
   <body>
-    <script type="importmap">
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- ** not support safari ** -->
+    <!-- <script type="importmap">
       {
         "imports": {
           "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
         }
       }
-    </script>
+    </script> -->
     <div id="app">
       <div class="container my-5">
         <div class="col text-center mb-4">
@@ -67,7 +69,9 @@
     </div>
 
     <script type="module">
-      import { createApp } from "vue";
+      // ** importmap not support safari **
+      // import { createApp } from "vue";
+      const { createApp } = Vue
       createApp({
         data() {
           return {
