@@ -28,8 +28,8 @@
       }
     </script>
     <div id="app">
-      <div class="container">
-        <div class="col text-center my-4">
+      <div class="container my-5">
+        <div class="col text-center mb-4">
           <h1>WeHelp Application</h1>
         </div>
         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -54,7 +54,12 @@
               :class="[index === 0 ? 'show' : '', 'accordion-collapse collapse']"
               :aria-labelledby="`panelsStayOpen-heading${item.rank}`"
             >
-              <div class="accordion-body">{{ item.content }}</div>
+              <div class="accordion-body">
+                <p :class="item.link ? '': 'mb-0'">{{ item.content }}</p>
+                <p v-if="item.link" class="mb-0">👉🏻 連結：
+                  <a :href="item.link" class="link-success">{{ item.link }}</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -71,38 +76,38 @@
               {
                 rank: "One",
                 title: "兩百字內的個人簡介",
-                content: "hi",
+                content: "Hi, 我是 Mickey。好相處、學習慢但熱愛學習的一個人。2021年三月我參加了逢甲全端培訓班，開始了軟體工程師之旅，後來自學javascript與vue框架，幸運的成為「遠端 + 一人」前端工程師。過去幾個月的時間裡，數度陷入進步的瓶頸，所以想要藉此機會加入WeHelp，以群體的方式學習(還是最愛學生時代那樣XD)，讓自己有目標的成長，不至於過於發散導致沒有成就感。",
               },
               {
                 rank: "Two",
-                title:
-                  "為了成為軟體工程師，曾做過什麼努力？若有具體專案作品請分享給我們。",
-                content: "hi",
+                title: "為了成為軟體工程師，曾做過什麼努力？若有具體專案作品請分享給我們。",
+                content: "參加了培訓班時，已經確定要開始轉職，結束後刷了工作職缺，照著上面重複的技術，又到udemy上自學了js與vue，最後以vue與bootstrap做了簡單的蛋糕訂購網站(only 前端)。",
+                link: "https://kikimiao1995.github.io/vue-project-v3"
               },
               {
                 rank: "Three",
                 title: "如果參與這個計畫，會怎麼安排學習時間？",
-                content: "hi",
+                content: "平日晚上2小時，六日則是6小時以上。每週希望花20小時以上的學習。",
               },
               {
                 rank: "Four",
                 title: "是否有想要加入的軟體公司？為什麼想加入該公司？",
-                content: "hi",
+                content: "還沒有想那麼多，但如果說夢幻公司的話，目前是Airbnb(但需要相關文憑QQ)，現實層面就是福利真的很吸引愛旅遊的人，技術上也已經是很成熟的軟體開發團隊。",
               },
               {
                 rank: "Five",
                 title: "請描述一件你曾經碰到最困難的事情，如何克服？",
-                content: "hi",
+                content: "大學時患有輕度的憂鬱症，就像失去了電力，每件事情都提不起勁。那時是沒有吃藥的，足足花了五年的時間才重新對未來人生有正面的憧憬與想像，回想起來，我其實並未真正克服，唯有time heal，但仍然很感謝那段時間的我給予現在的我許多人生上的領悟。當下次困難來臨，希望屆時的我有能力保持前進，同時治癒自己。",
               },
               {
                 rank: "Six",
                 title: "關於這份申請網頁，請分享一個你開發時的技術心得。",
-                content: "hi",
+                content: "撰寫這份申請書時，我使用了Boostrap的UI去減少切版的開發時間，並且透過引入vue3 CDN，簡化重複的程式碼，讓程式碼看起來更簡潔、易讀。",
               },
               {
                 rank: "Seven",
                 title: "其他想要對我們說的事情？",
-                content: "hi",
+                content: "我第一個真正好好學習的程式是python(在逢甲培訓班時)，那時候上課聽課，下課看彭彭老師的免費教學影片，聽得懂的當複習，不懂的看到明白。有空時，還會將彭彭老師的影片拿來預習課程，真的對新手的幫助很大，還是少數中文的(笑XD)，真的非常謝謝老師的影片拉～",
               },
             ],
           };
