@@ -110,11 +110,24 @@ img {
     grid-template-columns: 1fr;
   }
 }
+.other-el .item-vertical {
+  position: relative;
+}
 .other-el .item-vertical img {
   width: 100%;
   height: 240px;
 }
 .other-el .item-vertical p {
-  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px 0;
   text-align: center;
+  width: 100%;
+}
+.other-el .item-vertical i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fde047;
 }/*# sourceMappingURL=all.css.map */
