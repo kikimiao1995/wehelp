@@ -1,0 +1,93 @@
+/*在1200px(包含)以下，裡面的樣式會被開啟，並覆蓋前面的樣式*/
+@mixin pad
+  @media (max-width:1200px)
+    @content
+
+@mixin mobile
+  @media (max-width:600px)
+    @content
+
+* 
+  font-size: 20px
+  margin: 0
+  padding: 0
+img
+  display: block // 移除img底部的空白
+
+.navigator
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 10px 20px
+  .menu-list
+    display: flex
+    align-items: center
+    span
+      display: inline-block
+      @include mobile
+        display: none
+      margin-left: 20px
+    img
+      display: none
+      @include mobile
+        display: block
+      width: 24px
+
+.hero
+  height: 300px
+  background: #cffafe
+  display: flex
+  justify-content: center
+  align-items: center
+  h1
+    font-size: 40px
+
+.container
+  width: 1200px
+  @include pad
+    width: 90%
+  margin: 40px auto
+
+.item
+  background: #cffafe
+  img
+    max-width: 100% // 防止圖片破版
+    object-fit: cover
+    object-position: center
+
+.top-el
+  display: grid
+  grid-template-columns: 1fr 1fr
+  @include mobile
+    grid-template-columns: 1fr
+  grid-gap: 20px
+  .item-horizontal
+    display: flex
+    justify-content: left
+    align-items: center
+    img
+      width: 80px
+      height: 50px
+    p
+      margin-left: 10px
+
+.other-el
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  margin-top: 20px
+  @include pad
+    grid-template-columns: repeat(2, 1fr)
+  @include mobile
+    grid-template-columns: 1fr
+  grid-gap: 20px
+  .item-vertical
+    img
+      width: 100%
+      height: 240px
+    p
+      padding: 10px
+      text-align: center
+
+
+
+

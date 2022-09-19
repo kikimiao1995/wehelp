@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/*在1200px(包含)以下，裡面的樣式會被開啟，並覆蓋前面的樣式*/
+* {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+.navigator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px;
+}
+.navigator .menu-list {
+  display: flex;
+  align-items: center;
+}
+.navigator .menu-list span {
+  display: inline-block;
+  margin-left: 20px;
+}
+@media (max-width: 600px) {
+  .navigator .menu-list span {
+    display: none;
+  }
+}
+.navigator .menu-list img {
+  display: none;
+  width: 24px;
+}
+@media (max-width: 600px) {
+  .navigator .menu-list img {
+    display: block;
+  }
+}
+
+.hero {
+  height: 300px;
+  background: #cffafe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero h1 {
+  font-size: 40px;
+}
+
+.container {
+  width: 1200px;
+  margin: 40px auto;
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.item {
+  background: #cffafe;
+}
+.item img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.top-el {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+@media (max-width: 600px) {
+  .top-el {
+    grid-template-columns: 1fr;
+  }
+}
+.top-el .item-horizontal {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.top-el .item-horizontal img {
+  width: 80px;
+  height: 50px;
+}
+.top-el .item-horizontal p {
+  margin-left: 10px;
+}
+
+.other-el {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
+  grid-gap: 20px;
+}
+@media (max-width: 1200px) {
+  .other-el {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .other-el {
+    grid-template-columns: 1fr;
+  }
+}
+.other-el .item-vertical img {
+  width: 100%;
+  height: 240px;
+}
+.other-el .item-vertical p {
+  padding: 10px;
+  text-align: center;
+}/*# sourceMappingURL=all.css.map */
