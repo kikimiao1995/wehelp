@@ -53,7 +53,6 @@ a {
     height: 100vh;
     z-index: 10;
     background: #fff;
-    padding-top: 40px;
     box-shadow: -1px 0px 2px grey;
   }
   .menu > a {
@@ -67,11 +66,10 @@ a {
   transition: right 0.7s ease-in-out;
 }
 
-.menu-toggle {
+.menu-btn {
   position: fixed;
   right: 20px;
   top: 10px;
-  z-index: 100;
   display: none;
   cursor: pointer;
   background: url(../image/icon-menu.png) no-repeat center;
@@ -80,14 +78,9 @@ a {
   height: 30px;
 }
 @media (max-width: 600px) {
-  .menu-toggle {
+  .menu-btn {
     display: block;
   }
-}
-
-.menu-toggle-active {
-  background: url(../image/icon-close.png) no-repeat center;
-  background-size: contain;
 }
 
 .menu-list {

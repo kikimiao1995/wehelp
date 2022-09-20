@@ -51,7 +51,7 @@ a
     height: 100vh
     z-index: 10
     background: #fff
-    padding-top: 40px
+    // padding-top: 40px
     box-shadow: -1px 0px 2px grey // box-shadow: offset-x | offset-y | blur-radius | color
     >a
       line-height: 40px
@@ -61,11 +61,11 @@ a
   transition: right 0.7s ease-in-out
 
 
-.menu-toggle
+.menu-btn
   position: fixed
   right: 20px
   top: 10px
-  z-index: 100
+  // z-index: 100
   display: none
   @include mobile
     display: block
@@ -74,9 +74,9 @@ a
   background-size: contain
   width: 30px
   height: 30px
-.menu-toggle-active
-  background: url(../image/icon-close.png) no-repeat center
-  background-size: contain // 要再加一次
+// .menu-toggle-active
+//   background: url(../image/icon-close.png) no-repeat center
+//   background-size: contain // 要再加一次
 
 .menu-list
     display: flex

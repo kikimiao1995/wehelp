@@ -25,7 +25,7 @@
           <a href="#"><li>item 3</li></a>
           <a href="#"><li>item 4</li></a>
         </ul>
-        <div class="menu-toggle"></div>
+        <div class="menu-btn"></div>
     </section>
     <section class="hero">
       <h1>Welcome to MyHome</h1>
@@ -87,11 +87,18 @@
       </div>
     </main>
     <script>
-      const menuToggle = document.querySelector(".menu-toggle");
+      const menuBtn = document.querySelector(".menu-btn");
       const menu = document.querySelector(".menu");
-      menuToggle.addEventListener("click", () => {
-        menuToggle.classList.toggle("menu-toggle-active");
+      menuBtn.addEventListener("click", (e) => {
+        menuBtn.classList.toggle("menu-toggle-active");
         menu.classList.toggle("menu-active");
+      });
+      document.addEventListener("click", (e) => {
+        if (e.target !== menuBtn && e.target !== menu) {
+          console.log(e.target)
+          menuBtn.classList.remove("menu-toggle-active");
+          menu.classList.remove("menu-active");
+        }
       });
     </script>
   </body>
