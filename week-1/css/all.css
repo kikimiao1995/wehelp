@@ -1,40 +1,115 @@
 @charset "UTF-8";
 /*在1200px(包含)以下，裡面的樣式會被開啟，並覆蓋前面的樣式*/
 * {
-  font-size: 20px;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-size: 20px;
 }
 
 img {
   display: block;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 .navigator {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 20px;
+  padding: 10px 20px;
 }
-.navigator .menu-list {
+
+.burger-menu {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  box-shadow: none;
+}
+.menu a {
+  margin-left: 20px;
+}
+@media (max-width: 600px) {
+  .menu {
+    display: block;
+    position: fixed;
+    transition: right 0.7s ease-in-out;
+    right: -100%;
+    top: 0;
+    width: 60%;
+    height: 100vh;
+    z-index: 10;
+    background: #fff;
+    padding-top: 40px;
+    box-shadow: -1px 0px 2px grey;
+  }
+  .menu > a {
+    line-height: 40px;
+    text-align: center;
+  }
+}
+
+.menu-active {
+  right: 0;
+  transition: right 0.7s ease-in-out;
+}
+
+.menu-toggle {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  z-index: 100;
+  display: none;
+  cursor: pointer;
+  background: url(../image/icon-menu.png) no-repeat center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+}
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.menu-toggle-active {
+  background: url(../image/icon-close.png) no-repeat center;
+  background-size: contain;
+}
+
+.menu-list {
   display: flex;
   align-items: center;
 }
-.navigator .menu-list span {
+.menu-list span {
   display: inline-block;
   margin-left: 20px;
 }
 @media (max-width: 600px) {
-  .navigator .menu-list span {
+  .menu-list span {
     display: none;
   }
 }
-.navigator .menu-list img {
+.menu-list img {
   display: none;
   width: 24px;
+  cursor: pointer;
 }
 @media (max-width: 600px) {
-  .navigator .menu-list img {
+  .menu-list img {
     display: block;
   }
 }

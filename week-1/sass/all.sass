@@ -7,19 +7,78 @@
   @media (max-width:600px)
     @content
 
-* 
-  font-size: 20px
+// ### Reset style ###
+*  // or html, body
   margin: 0
   padding: 0
+body
+  font-size: 20px
 img
   display: block // 移除img底部的空白
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+a
+  text-decoration: none
+  color: #000
 
+// ### Main style ###
 .navigator
   display: flex
   justify-content: space-between
   align-items: center
-  margin: 10px 20px
-  .menu-list
+  padding: 10px 20px
+
+// new menuList style
+.burger-menu
+  display: flex
+
+.menu
+  display: flex
+  a
+    margin-left: 20px
+  // a:hover
+  //   background: #ebead6
+  box-shadow: none
+  @include mobile
+    display: block
+    position: fixed
+    transition: right 0.7s ease-in-out // transition: property | duration | timing-function | delay
+    right: -100% // 這裡transition-property: all 會跑出box-shadow奇怪的轉場效果
+    top: 0
+    width:60%
+    height: 100vh
+    z-index: 10
+    background: #fff
+    padding-top: 40px
+    box-shadow: -1px 0px 2px grey // box-shadow: offset-x | offset-y | blur-radius | color
+    >a
+      line-height: 40px
+      text-align: center
+.menu-active
+  right: 0
+  transition: right 0.7s ease-in-out
+
+
+.menu-toggle
+  position: fixed
+  right: 20px
+  top: 10px
+  z-index: 100
+  display: none
+  @include mobile
+    display: block
+  cursor: pointer
+  background: url(../image/icon-menu.png) no-repeat center
+  background-size: contain
+  width: 30px
+  height: 30px
+.menu-toggle-active
+  background: url(../image/icon-close.png) no-repeat center
+  background-size: contain // 要再加一次
+
+.menu-list
     display: flex
     align-items: center
     span
@@ -32,6 +91,8 @@ img
       @include mobile
         display: block
       width: 24px
+      cursor: pointer
+
 
 .hero
   height: 300px
