@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- font-awesome @6.2.0 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/all.css" />
+    <title>week-1</title>
+  </head>
+  <body>
+    <section class="navigator">
+      <div class="logo">My Website</div>
+      <div class="burger-menu">
+        <ul class="menu">
+          <a href="#"><li>item 1</li></a>
+          <a href="#"><li>item 2</li></a>
+          <a href="#"><li>item 3</li></a>
+          <a href="#"><li>item 4</li></a>
+        </ul>
+        <div class="menu-btn"></div>
+    </section>
+    <section class="hero">
+      <h1>Welcome to MyHome</h1>
+    </section>
+    <main>
+      <div class="container">
+        <div class="display-horizontal"></div>
+        <div class="display-vertical"></div>
+        <div class="center"><button class="btn">Load More</button></div>
+      </div>
+    </main>
+    <script>
+      // burger menu
+        const menuBtn = document.querySelector(".menu-btn");
+        const menu = document.querySelector(".menu");
+        menuBtn.addEventListener("click", (e) => {
+          menuBtn.classList.toggle("menu-toggle-active");
+          menu.classList.toggle("menu-active");
+        });
+        document.addEventListener("click", (e) => {
+          if (e.target !== menuBtn && e.target !== menu) {
+            // console.log(e.target)
+            menuBtn.classList.remove("menu-toggle-active");
+            menu.classList.remove("menu-active");
+          }
+        });
+      // image display
+      // imagUrl + text 其實可以用一個物件包起來 => item
+      function layout(direction, imgUrl, text) { // direction: H = horizontal, V = vertical
+        direction = direction === 'H' ? "horizontal" : "vertical";
+        const display = document.querySelector(`.display-${direction}`);
+        const div = document.createElement("div");
+        div.classList.add('item', `item-${direction}`);
+        const img = document.createElement("img");
+        img.src = imgUrl;
+        img.alt = 'astronaut';
+        const p = document.createElement("p");
+        p.textContent = text || 'Promotion 1';
+        div.appendChild(img);
+        div.appendChild(p);
+        display.appendChild(div);
+        if (direction === 'vertical') {
+          const i = document.createElement("i");
+          i.classList.add('fa-solid', 'fa-star');
+          div.appendChild(i);
+        }
+      }
+      let data = null
+      let offset = 0 // 資料的起始點
+      const regexUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi // i = ignore case 忽略大小寫
+      fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json")
+        .then((response) => response.json()) // 沒有縮成一排的話，要加回 return 給下面的.then。reponse 是整個封包，response.json()回傳promise，只包含body。
+        .then((body) => {
+          data = body.result.results
+          for(let i = 0; i < 2; i++) {
+            layout('H', data[i].file.match(regexUrl)[0], data[i].stitle);
+          }
+          for (let i = 2; i < 10; i++) {
+            layout('V', data[i].file.match(regexUrl)[0], data[i].stitle);
+          }
+          offset = 10
+        })
+      function loadMore() {
+        if (offset >= data.length) return
+        const vertical = document.querySelector('.display-vertical');
+        let max = offset + 8 > data.length ? data.length : offset + 8
+        for (let i = offset; i < max; i++) {
+          layout('V', data[i].file.match(regexUrl)[0], data[i].stitle);
+        }
+        offset += 8
+      }
+      const btn = document.querySelector(".btn")
+      btn.addEventListener("click", (e) => {
+        loadMore();
+      });
+    </script>
+  </body>
+</html>

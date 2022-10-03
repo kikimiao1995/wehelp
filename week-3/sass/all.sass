@@ -1,0 +1,171 @@
+/*在1200px(包含)以下，裡面的樣式會被開啟，並覆蓋前面的樣式*/
+@mixin pad
+  @media (max-width:1200px)
+    @content
+
+@mixin mobile
+  @media (max-width:600px)
+    @content
+
+// ### Reset style ###
+*  // or html, body
+  margin: 0
+  padding: 0
+body
+  font-size: 20px
+img
+  display: block // 移除img底部的空白
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+a
+  text-decoration: none
+  color: #000
+
+// ### Main style ###
+.navigator
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 10px 20px
+
+// new menuList style
+.burger-menu
+  display: flex
+
+.menu
+  display: flex
+  a
+    margin-left: 20px
+  // a:hover
+  //   background: #ebead6
+  box-shadow: none
+  @include mobile
+    display: block
+    position: fixed
+    transition: right 0.7s ease-in-out // transition: property | duration | timing-function | delay
+    right: -100% // 這裡transition-property: all 會跑出box-shadow奇怪的轉場效果
+    top: 0
+    width:60%
+    height: 100vh
+    z-index: 100
+    background: #fff
+    // padding-top: 40px
+    box-shadow: -1px 0px 2px grey // box-shadow: offset-x | offset-y | blur-radius | color
+    >a
+      line-height: 40px
+      text-align: center
+.menu-active
+  right: 0
+  transition: right 0.7s ease-in-out
+
+
+.menu-btn
+  position: fixed
+  right: 20px
+  top: 10px
+  // z-index: 100
+  display: none
+  @include mobile
+    display: block
+  cursor: pointer
+  background: url(../image/icon-menu.png) no-repeat center
+  background-size: contain
+  width: 30px
+  height: 30px
+// .menu-toggle-active
+//   background: url(../image/icon-close.png) no-repeat center
+//   background-size: contain // 要再加一次
+
+.menu-list
+    display: flex
+    align-items: center
+    span
+      display: inline-block
+      @include mobile
+        display: none
+      margin-left: 20px
+    img
+      display: none
+      @include mobile
+        display: block
+      width: 24px
+      cursor: pointer
+
+
+.hero
+  height: 300px
+  background: #cffafe
+  display: flex
+  justify-content: center
+  align-items: center
+  h1
+    font-size: 40px
+    text-align: center
+
+.container
+  width: 1200px
+  @include pad
+    width: 90%
+  margin: 40px auto
+
+.item
+  background: #cffafe
+  img
+    max-width: 100% // 防止圖片破版
+    object-fit: cover
+    object-position: center
+
+.display-horizontal
+  display: grid
+  grid-template-columns: 1fr 1fr
+  @include mobile
+    grid-template-columns: 1fr
+  grid-gap: 20px
+  .item-horizontal
+    display: flex
+    justify-content: left
+    align-items: center
+    img
+      width: 80px
+      height: 50px
+    p
+      margin-left: 10px
+
+.display-vertical
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  margin-top: 20px
+  @include pad
+    grid-template-columns: repeat(2, 1fr)
+  @include mobile
+    grid-template-columns: 1fr
+  grid-gap: 20px
+  .item-vertical
+    position: relative
+    img
+      width: 100%
+      height: 240px
+    p
+      position: absolute
+      bottom: 0
+      background: rgba(255,255,255, 0.4)
+      padding: 15px 0
+      text-align: center
+      width: 100%
+    i
+      position: absolute
+      top: 15px
+      right: 15px
+      color: #fde047
+
+.center
+  display: flex
+  justify-content: center
+  align-items: center
+
+.btn
+  padding: 10px 20px
+  border-radius: 5px
+  margin-top: 40px
