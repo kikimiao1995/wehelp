@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block header %}
+  <h1>失敗頁面</h1>
+{% endblock %}
+{% block content %}
+  <div class="row py-5">
+    <div class="col-6 mx-auto text-center">
+      <h3 class="mb-3">{{ error_msg }}</h3>
+      <a href="/" type="button" class="btn btn-link text-center">回到首頁</a>
+    </div>
+    
+  </div>
+{% endblock %}

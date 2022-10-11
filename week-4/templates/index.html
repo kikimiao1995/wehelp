@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block header %}
+  <h1>歡迎光臨，請輸入帳號密碼</h1>
+{% endblock %}
+{% block content %}
+  <div class="row py-5">
+    <div class="col-6 mx-auto">
+      <h3 class="text-center mb-5">登入系統</h3>
+      <form action="/signup" method="post">
+        <div class="mb-3">
+          <label for="account" class="form-label">帳號</label>
+          <input class="form-control" name="account" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">密碼</label>
+          <input type="password" class="form-control" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row py-5">
+    <div class="col-6 mx-auto">
+      <h3>計算正整數的平方</h3>
+      <form action="/square"  method="POST">
+        <div class="my-3">
+          <label for="num" class="form-label">請輸入正整數：</label>
+          <input class="form-control" name="num" type="number" required>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </div>
+  </div>
+{% endblock %}
