@@ -6,6 +6,7 @@
     SHOW DATABASES;                                 # 顯示所有的資料庫
     USE website;                                    # 切換資料庫
     ```
+    - 沒有 `USE [database]` 會報錯，ERROR 1046 (3D000): No database selected。
     
 - 建立會員資料表，取名字為 member
     
