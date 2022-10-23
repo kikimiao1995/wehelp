@@ -1,3 +1,27 @@
+## Demand - 2 SQL Create database and table
+- 建立一個新的資料庫， 取名字為 website。
+    
+    ```mysql
+    CREATE DATABASE website;
+    SHOW DATABASES;                                 # 顯示所有的資料庫
+    USE website;                                    # 切換資料庫
+    ```
+    
+- 建立會員資料表，取名字為 member
+    
+    ```mysql
+    CREATE TABLE member (
+        id BIGINT NOT NULL AUTO_INCREMENT,
+        PRIMARY KEY(id),
+        name VARCHAR(255) NOT NULL,
+        username VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        follower_count INT UNSIGNED NOT NULL DEFAULT 0,
+        time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    ```
+
+
 ## Demand - 3 SQL CRUD
 - 使用 INSERT 指令新增一筆資料到 member 資料表中，這筆資料的 username 和 password 欄位必須是 test。接著繼續新增至少 4 筆隨意的資料。
 
