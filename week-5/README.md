@@ -25,6 +25,9 @@
     - 顯示目前資料庫下的所有 tables `SHOW TABLES;`
     - 檢查 table 的欄位 `DESC <table_name>;` or `DESCRIBE <table_name>;`
     - 刪除 table `DROP TABLE <table_name>;`
+    
+    ![desc](images/demand2-desc.png)
+    ![show_tables](images/demand2-show_tables.png)
 
 
 ## Demand - 3 SQL CRUD
@@ -47,6 +50,7 @@
     ```mysql
     SELECT * FROM member;
     ```
+    ![...](images/demand3-2.png)
 
 - 使用 SELECT 指令取得所有在 member 資料表中的會員資料，並按照 time 欄位，由近到遠排序。
   
@@ -55,6 +59,7 @@
     ```mysql
     SELECT * FROM member ORDER BY time DESC;
     ```
+    ![...](images/demand3-3.png)
 
 - 使用 SELECT 指令取得 member 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。( 並非編號 2、3、4 的資料，而是排序後的第 2 ~ 4 筆資料 )
 
@@ -83,7 +88,9 @@
     FROM OrderedMember
     WHERE RowNumber BETWEEN 2 AND 4;
     ```
-
+    
+    ![...](images/demand3-4.png)
+    
 - 使用 SELECT 指令取得欄位 username 是 test 的會員資料。
     
     ```mysql
@@ -91,6 +98,8 @@
     FROM member
     WHERE username='test';
     ```
+    
+    ![...](images/demand3-5.png)
 
 - 使用 SELECT 指令取得欄位 username 是 test、且欄位 password 也是 test 的資料。
 
@@ -99,6 +108,8 @@
     FROM member
     WHERE username='test' and password='test';
     ```
+    
+    ![...](images/demand3-6.png)
   
 - 使用 UPDATE 指令更新欄位 username 是 test 的會員資料，將資料中的 name 欄位改成 test2。
     
@@ -108,6 +119,7 @@
     WHERE username='test';
     ```
     - `select * from member where name='test2'`
+    ![...](images/demand3-7.png)
 
 ## Demand - 4 SQL Aggregate Functions
 
@@ -118,6 +130,8 @@
     FROM member;
     ```
     
+    ![...](images/demand4-1.png)
+    
 - 取得 member 資料表中，所有會員 follower_count 欄位的總和。
 
     ```mysql
@@ -125,12 +139,16 @@
     FROM member;
     ```
     
+    ![...](images/demand4-2.png)
+    
 - 取得 member 資料表中，所有會員 follower_count 欄位的平均數。
 
     ```mysql
     SELECT AVG(follower_count)
     FROM member;
     ```
+    
+    ![...](images/demand4-3.png)
 
 ## Demand - 5 SQL JOIN
 
@@ -154,6 +172,9 @@
     INSERT INTO message (member_id, content, like_count) VALUES (1, 'test test 456!', 200);
     ```
     
+    ![...](images/demand5-1.1.png)
+    ![...](images/demand5-1.2.png)
+    
 - 使用 SELECT 搭配 JOIN 語法，取得所有留言，結果須包含留言者會員的姓名。
 
     ```mysql
@@ -162,6 +183,8 @@
     INNER JOIN member
     ON message.member_id = member.id;
     ```
+    
+    ![...](images/demand5-2.png)
 
 - 使用 SELECT 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有留言，資料中須包含留言者會員的姓名。
 
@@ -171,6 +194,8 @@
     INNER JOIN member ON message.member_id = member.id
     WHERE member.username = 'test';
     ```
+    
+    ![...](images/demand5-3.png)
 
 - 使用 SELECT、SQL Aggregate Functions 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有留言平均按讚數。
     
@@ -180,6 +205,8 @@
     INNER JOIN member ON message.member_id = member.id
     WHERE member.username = 'test';
     ```
+    
+    ![...](images/demand5-4.png)
 
 - 匯出資料庫中的資料
     
