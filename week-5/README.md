@@ -21,6 +21,10 @@
         time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
     ```
+    
+    - 顯示目前資料庫下的所有 tables `SHOW TABLES;`
+    - 檢查 table 的欄位 `DESC <table_name>;` or `DESCRIBE <table_name>;`
+    - 刪除 table `DROP TABLE <table_name>;`
 
 
 ## Demand - 3 SQL CRUD
@@ -28,8 +32,16 @@
 
     ```sql
     INSERT INTO member (name, username, password)
-    VALUES ('test', 'test', 'test'), ('react', 'react', '2013'),('golang', 'golang', '2009'), ('flask', 'flask', '2010'), ('linux', 'linux', '1991');
+    VALUES ('test', 'test123', 'test'), ('react', 'react123', '2013'),('golang', 'golang123', '2009'), ('flask', 'flask123', '2010'), ('linux', 'linux123', '1991');
+    
+    INSERT INTO member (name, username, password) VALUES ('test', 'test', 'test');
+    INSERT INTO member (name, username, password) VALUES ('react', 'react123', '2013');
+    INSERT INTO member (name, username, password) VALUES ('golang', 'golang123', '2009');
+    INSERT INTO member (name, username, password) VALUES ('flask', 'flask123', '2010');
+    INSERT INTO member (name, username, password) VALUES ('linux', 'linux123', '1991');
     ```
+    
+    - `delete from member where name='flask';` 沒有加 where 條件會刪除table中的所有資料！    
     
 - 使用 SELECT 指令取得所有在 member 資料表中的會員資料。
     ```mysql
@@ -95,6 +107,7 @@
     SET name = 'test2'
     WHERE username='test';
     ```
+    - `select * from member where name='test2'`
 
 ## Demand - 4 SQL Aggregate Functions
 
@@ -134,7 +147,11 @@
     );
     
     INSERT INTO message (member_id, content, like_count) VALUES (2, 'React is the best !', 100);
-    INSERT INTO message (member_id, content, like_count) VALUES (6, 'Python is the best !', 1000);
+    INSERT INTO message (member_id, content, like_count) VALUES (3, 'Go is the best !', 1000);
+    INSERT INTO message (member_id, content, like_count) VALUES (3, 'Go is an open source programming language supported by Google', 1000);
+    INSERT INTO message (member_id, content, like_count) VALUES (5, 'Linux is the best !', 1000);
+    INSERT INTO message (member_id, content, like_count) VALUES (1, 'test test 123!', 1000);
+    INSERT INTO message (member_id, content, like_count) VALUES (1, 'test test 456!', 200);
     ```
     
 - 使用 SELECT 搭配 JOIN 語法，取得所有留言，結果須包含留言者會員的姓名。
@@ -162,5 +179,11 @@
     FROM message
     INNER JOIN member ON message.member_id = member.id
     WHERE member.username = 'test';
+    ```
+
+- 匯出資料庫中的資料
+    
+    ```linux
+    docker exec -it mysql1 mysqldump -uroot -pmysql1pwd website > Documents/data.sql
     ```
     
